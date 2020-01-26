@@ -3,12 +3,19 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="login col-8 offset-2 col-lg-4 offset-lg-5">
-                    <form>
+                    <!-- <form>
                         <div class="fb-login-button" data-width="" data-size="large" data-button-type="login_with"
                         data-auto-logout-link="false" data-use-continue-as="true"></div>
-                    </form>
+                    </form> -->
+                    <button class="btn btn-primary" (click)="signInWithFB()">test login</button>
                 </div>
             </div>
         </div>
+
+        <img src="{{ user.photoUrl }}">
+<div>
+  <h4>{{ user.name }}</h4>
+  <p>{{ user.email }}</p>
+</div>
     </div>
 </body>
