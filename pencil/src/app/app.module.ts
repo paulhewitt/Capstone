@@ -13,6 +13,8 @@ import { adapterFactory } from 'angular-calendar/date-adapters/moment';
 import * as moment from 'moment';
 import { CalendarComponent } from './calendar/calendar.component';
 import { SocialLoginModule, AuthServiceConfig, FacebookLoginProvider } from 'angularx-social-login';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatIconModule, MatButtonModule, MatCardModule } from '@angular/material';
 
 const config = new AuthServiceConfig([
   {
@@ -44,7 +46,11 @@ export function momentAdapterFactory() {
     AppRoutingModule,
     HttpClientModule,
     CalendarModule.forRoot({ provide: DateAdapter, useFactory: momentAdapterFactory }),
-    SocialLoginModule
+    SocialLoginModule,
+    BrowserAnimationsModule,
+    MatIconModule,
+    MatButtonModule,
+    MatCardModule
   ],
   providers: [
     {

@@ -23,4 +23,8 @@ export class LoginComponent implements OnInit {
     this.authService.signIn(FacebookLoginProvider.PROVIDER_ID);
   }
 
+  signOut(): void {
+    this.authService.signOut();
+   }
+
 }
