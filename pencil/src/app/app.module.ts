@@ -12,8 +12,7 @@ import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/moment';
 import * as moment from 'moment';
 import { CalendarComponent } from './calendar/calendar.component';
-import { SocialLoginModule, AuthServiceConfig } from 'angularx-social-login';
-import { FacebookLoginProvider } from 'angularx-social-login';
+import { SocialLoginModule, AuthServiceConfig, FacebookLoginProvider } from 'angularx-social-login';
 
 const config = new AuthServiceConfig([
   {

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthService, SocialUser } from 'angularx-social-login';
 
 @Component({
   selector: 'app-root',

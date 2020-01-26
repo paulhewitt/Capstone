@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from 'angularx-social-login';
-import { FacebookLoginProvider } from 'angularx-social-login';
-import { SocialUser } from 'angularx-social-login';
+import { AuthService, FacebookLoginProvider, SocialUser } from 'angularx-social-login';
 
 @Component({
   selector: 'app-login',
