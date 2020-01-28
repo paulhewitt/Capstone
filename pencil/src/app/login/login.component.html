@@ -3,16 +3,16 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="login col-8 offset-2 col-lg-4 offset-lg-5">
-                    <button type="button" (click)="signInWithFB()" *ngIf="loggedIn===false" mat-flat-button
+                    <button type="button" (click)="signIn()" mat-flat-button
                         color="primary">Sign In With Facebook</button>
                 </div>
             </div>
         </div>
 
-        <img src="{{user.photoUrl}}">
+        <!-- <img src="{{user.photoUrl}}">
         <div>
             <h4>{{user.name}}</h4>
             <p>{{user.email}}</p>
-        </div>
+        </div> -->
     </div>
 </body>
