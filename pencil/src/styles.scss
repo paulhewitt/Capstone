@@ -30,3 +30,20 @@ $pencil-theme: mat-light-theme($pencil-primary, $pencil-accent, $pencil-warn);
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+#myVideo{
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    -o-filter: blur(10px);
+    filter: blur(10px);
+    object-fit: cover;
+    transform: scale(1.04);
+}
+// .content{
+//     background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/assets/images/background.jpg');
+//     width: 100vw;
+//     height: 100vh;
+//     background-size: cover;
+// }
