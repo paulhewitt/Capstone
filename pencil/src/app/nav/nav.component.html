@@ -6,12 +6,13 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
         <div class="navbar-nav ml-auto">
-            <img *ngIf="user" src="{{user.photoUrl}}" style="border-radius:15px; height:35px; width:35px;">
+            <img *ngIf="user" src="{{user.photoUrl}}" class="userImage">
+            <p *ngIf="user" class="userName">{{user.firstName}}</p>
                 <a class="nav-item nav-link" [routerLink]="''" routerLinkActive="active"
                     [routerLinkActiveOptions]="{exact:true}">Home</a>
                 <a *ngIf="!user" class="nav-item nav-link" [routerLink]="'/login'" routerLinkActive="active"
                     [routerLinkActiveOptions]="{exact:true}">Login</a>
-                <a class="nav-item nav-link" [routerLink]="'/signup'" routerLinkActive="active"
+                <a *ngIf="user" class="nav-item nav-link" [routerLink]="'/signup'" routerLinkActive="active"
                     [routerLinkActiveOptions]="{exact:true}">Sign Up</a>
         </div>
     </div>

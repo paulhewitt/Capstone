@@ -24,7 +24,7 @@ export class UserService implements OnInit {
     setTimeout(() => {
       this.router.navigate(['']);
       console.log(this.user);
-    }, 1750);
+    }, 2000);
   }
 
   signOut(): void {
