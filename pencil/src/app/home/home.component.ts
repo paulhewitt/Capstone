@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HomeService } from '../../services/home.service';
+import * as data from '../../assets/data/mock_data.json';
 
 @Component({
   selector: 'app-home',
@@ -8,19 +9,15 @@ import { HomeService } from '../../services/home.service';
 })
 export class HomeComponent implements OnInit {
 
-  swPlanets: any[] = [];
+  businesses: any;
   constructor(private homeService: HomeService) { }
 
   ngOnInit() {
   }
 
   search() {
-    this.homeService.getPlanets().subscribe((planets) => {
-      this.swPlanets.map = planets.results;
-    }, (error) => {
-      console.log(error);
-    });
-    console.log(this.swPlanets);
+   this.businesses = data.default;
+   console.log(this.businesses);
   }
 
 
