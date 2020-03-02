@@ -13,8 +13,8 @@ export class HomeService {
     this.http = http;
   }
 
-  public getPlanets(): Observable<any> {
-    const url = `https://swapi.co/api/planets/`;
-    return this.http.get<any[]>(url);
+  public getMockData(): Observable<any> {
+    return this.http.get('http://localhost:4200/assets/data.json');
   }
+
 }

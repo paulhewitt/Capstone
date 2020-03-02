@@ -16,8 +16,14 @@ export class HomeComponent implements OnInit {
   }
 
   search() {
-   this.businesses = data.default;
-   console.log(this.businesses);
+    this.homeService.getMockData().subscribe(
+      (businesses) => {
+        this.businesses = businesses;
+        console.log(businesses);
+      }, (error) => {
+        console.log(error);
+      }
+    );
   }
 
 
