@@ -19,7 +19,7 @@
 <div class="container-fluid mockData">
   <div class="row">
       <div *ngFor="let business of businesses" class="col-3 cards">
-        <mat-card class="card">
+        <mat-card class="card" (click)="cardClicked(business)">
           <mat-card-title>{{business.company_name}}</mat-card-title>
           <mat-card-subtitle>{{business.department}}</mat-card-subtitle>
           <mat-card-content>{{business.street_address}}</mat-card-content>
