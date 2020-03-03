@@ -1,18 +1,21 @@
 <body>
     <div class="content">
         <div class="container-fluid">
-            <div class="row">
-                <div class="login col-8 offset-2 col-lg-4 offset-lg-5">
-                    <button type="button" (click)="signIn()" mat-flat-button
-                        color="primary">Sign In With Facebook</button>
+            <div class="login">
+                <div class="row">
+                    <div class="clientDisplay col-8 ">
+                        <p>Connect With...</p>
+                        <div id="map">
+                            
+                        </div>
+                    </div>
+                    <div class="loginButton col-4">
+                        <button type="button" (click)="signIn()" mat-flat-button
+                            color="primary">Sign In With Facebook</button>
+                    </div>  
                 </div>
             </div>
         </div>
-
-        <!-- <img src="{{user.photoUrl}}">
-        <div>
-            <h4>{{user.name}}</h4>
-            <p>{{user.email}}</p>
-        </div> -->
     </div>
+    <script>src="src/assets/js/googleMaps.js"</script>
 </body>

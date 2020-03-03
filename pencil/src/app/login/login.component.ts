@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService, FacebookLoginProvider, SocialUser } from 'angularx-social-login';
 import { UserService } from '../../services/user.service';
+declare const googleMaps: any;
 
 @Component({
   selector: 'app-login',
@@ -22,4 +23,9 @@ export class LoginComponent implements OnInit {
   signIn() {
     this.userService.signIn();
   }
+
+  onload(){
+    googleMaps();
+  }
+
 }
