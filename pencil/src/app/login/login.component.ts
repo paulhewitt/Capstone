@@ -20,11 +20,15 @@ export class LoginComponent implements OnInit {
     this.authService.authState.subscribe((user) => {
       this.userService.setUser(user);
       this.userService.setLoggedIn(user != null);
+      this.getBusinesses();
     });
+  }
 
-    this.homeService.getMockData().subscribe(
+  getBusinesses() {
+    this.homeService.getAllBusinesses().subscribe(
       (businesses) => {
-        this.businesses = businesses;
+        this.businesses = businesses.Items;
+        console.log(this.businesses);
         this.rngNumber(businesses);
       }, (error) => {
         console.log(error);
@@ -38,11 +42,13 @@ export class LoginComponent implements OnInit {
 
   rngNumber(businesses){
     const numOfBusiness = Object.keys(this.businesses).length;
+    console.log(numOfBusiness);
     const rngID = Math.floor((Math.random() * numOfBusiness) + 1);
-    const genBusiness = businesses.filter(singleBusiness => singleBusiness.id == rngID);
-    this.rngBusiness = genBusiness[0];
+    const genBusiness = this.businesses[rngID];
+    console.log(genBusiness);
+    this.rngBusiness = genBusiness;
     console.log(this.rngBusiness);
-    document.getElementById("businessName").innerHTML = '<p> Connect With ' + this.rngBusiness.company_name + '</p>';
+    document.getElementById('businessName').innerHTML = '<p> Connect With ' + this.rngBusiness.name + '</p>';
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(position => {
         this.displayLocationInfo(position);
@@ -60,7 +66,7 @@ export class LoginComponent implements OnInit {
     blockToInsert.style.height = '600px';
     blockToInsert.style.border = '0';
     blockToInsert.src = 'https://www.google.com/maps/embed/v1/place?key=AIzaSyBdffraumdcWacCqb2uot3eZ4DmizWRn8g&q='
-    + this.rngBusiness.street_address + ',' + this.rngBusiness.city +
+    + this.rngBusiness.address + ',' + this.rngBusiness.city +
     '&center=' + lat + ',' + lng
     + '&zoom=13';
     containerBlock.appendChild(blockToInsert);
