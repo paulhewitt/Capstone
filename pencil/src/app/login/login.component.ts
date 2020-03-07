@@ -13,7 +13,7 @@ export class LoginComponent implements OnInit {
 
   businesses: any;
   rngBusiness: any;
-  
+
   constructor(private authService: AuthService, private userService: UserService, private homeService: HomeService) { }
 
   ngOnInit() {
@@ -29,13 +29,13 @@ export class LoginComponent implements OnInit {
       }, (error) => {
         console.log(error);
       }
-    ); 
+    );
   }
 
   signIn() {
     this.userService.signIn();
   }
-  
+
   rngNumber(businesses){
     const numOfBusiness = Object.keys(this.businesses).length;
     const rngID = Math.floor((Math.random() * numOfBusiness) + 1);
@@ -58,11 +58,11 @@ export class LoginComponent implements OnInit {
 
     blockToInsert.style.width = '100%';
     blockToInsert.style.height = '600px';
-    blockToInsert.style.border = '0';   
+    blockToInsert.style.border = '0';
     blockToInsert.src = 'https://www.google.com/maps/embed/v1/place?key=AIzaSyBdffraumdcWacCqb2uot3eZ4DmizWRn8g&q='
     + this.rngBusiness.street_address + ',' + this.rngBusiness.city +
     '&center=' + lat + ',' + lng
-    +'&zoom=13';
+    + '&zoom=13';
     containerBlock.appendChild(blockToInsert);
   }
 }

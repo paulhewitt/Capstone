@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { HomeService } from '../../services/home.service';
-import * as data from '../../assets/data/mock_data.json';
 
 @Component({
   selector: 'app-home',

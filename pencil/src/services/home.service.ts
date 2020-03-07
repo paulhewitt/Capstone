@@ -37,7 +37,7 @@ export class HomeService {
   }
 
   public getMockData(): Observable<any> {
-    return this.http.get('http://localhost:4200/assets/data.json');
+    return this.http.get('http://localhost:4200/assets/data/data.json');
   }
 
 }
