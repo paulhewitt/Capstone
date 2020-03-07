@@ -45,7 +45,13 @@
                 <option>Other</option>
               </select>
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-md btn-primary" [disabled]="submitting || success">
+              <span *ngIf="submitting">
+                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>&nbsp;
+              </span>
+              <span *ngIf="success">Thanks!</span>
+              <span *ngIf="!success">Sign Up</span>
+            </button>
           </form>
         </div>
       </div>

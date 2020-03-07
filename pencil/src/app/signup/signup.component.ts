@@ -39,7 +39,7 @@ export class SignupComponent implements OnInit {
   }
 
   addBusiness() {
-    this.submitted = true;
+    this.submitting = true;
     let signUpForm = this.signupForm;
     this.signupForm.patchValue({
       userId: this.user.id,
