@@ -17,10 +17,11 @@ import (
 var db = dynamodb.New(session.New(), aws.NewConfig().WithRegion("us-east-1"))
 
 func Handler(req events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, error) {
-		input := &dynamodb.ScanInput{
-			TableName: aws.String("businessesTable"),
-			//FilterExpression:
-		}
+	input := &dynamodb.ScanInput{
+		TableName: aws.String("businessesTable"),
+		//FilterExpression:
+	}
+
 
 	result, err := db.Scan(input)
 	if err != nil {

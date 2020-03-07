@@ -30,7 +30,7 @@ type business struct {
 	State          string `json:"state"`
 	Country        string `json:"country"`
 	PostalCode     string `json:"postalCode"`
-	Schedule       string `json:"schedule"`
+	Type       	   string `json:"type"`
 }
 
 func router(req events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, error) {
@@ -65,6 +65,9 @@ func show(req events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, er
 
 	return events.APIGatewayProxyResponse{
 		StatusCode: http.StatusOK,
+		Headers: map[string]string{
+			"Access-Control-Allow-Origin": "*",
+			"Access-Control-Allow-Credentials": "true",},
 		Body:       string(js),
 	}, nil
 }
@@ -94,7 +97,8 @@ func create(req events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, 
 
 	return events.APIGatewayProxyResponse{
 		StatusCode: 201,
-		Headers:    map[string]string{"Location": fmt.Sprintf("/businesses?name=%s", bz.Name)},
+		Headers:    map[string]string{"Location": fmt.Sprintf("/businesses?name=%s", bz.Name), "Access-Control-Allow-Origin": "*",
+			"Access-Control-Allow-Credentials": "true",},
 	}, nil
 }
 
@@ -175,8 +179,8 @@ func putItem(bz *business) error {
 			"postalCode": {
 				S: aws.String(bz.PostalCode),
 			},
-			"schedule": {
-				S: aws.String(bz.Schedule),
+			"type": {
+				S: aws.String(bz.Type),
 			},
 		},
 	}

@@ -76,12 +76,14 @@ functions:
       - http:
           path: businesses
           method: ANY
+          cors: true
   business:
     handler: bin/business
     events:
       - http:
           path: business
           method: get
+          cors: true
 
 resources: # CloudFormation template syntax from here on.
   Resources:
