@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService, FacebookLoginProvider, SocialUser } from 'angularx-social-login';
 import { UserService } from '../../services/user.service';
 import { HomeService } from '../../services/home.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-login',
@@ -48,7 +49,7 @@ export class LoginComponent implements OnInit {
     console.log(genBusiness);
     this.rngBusiness = genBusiness;
     console.log(this.rngBusiness);
-    document.getElementById('businessName').innerHTML = '<p> Connect With ' + this.rngBusiness.name + '</p>';
+    document.getElementById('businessName').innerHTML = '<p> Connect With ' + this.rngBusiness.name.S + '</p>';
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(position => {
         this.displayLocationInfo(position);
@@ -65,8 +66,8 @@ export class LoginComponent implements OnInit {
     blockToInsert.style.width = '100%';
     blockToInsert.style.height = '600px';
     blockToInsert.style.border = '0';
-    blockToInsert.src = 'https://www.google.com/maps/embed/v1/place?key=AIzaSyBdffraumdcWacCqb2uot3eZ4DmizWRn8g&q='
-    + this.rngBusiness.address + ',' + this.rngBusiness.city +
+    blockToInsert.src = `https://www.google.com/maps/embed/v1/place?key=${environment.apiGoogleMaps}&q=`
+    + this.rngBusiness.address.S + ',' + this.rngBusiness.city.S +
     '&center=' + lat + ',' + lng
     + '&zoom=13';
     containerBlock.appendChild(blockToInsert);
