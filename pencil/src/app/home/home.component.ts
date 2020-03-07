@@ -29,6 +29,4 @@ export class HomeComponent implements OnInit {
   cardClicked(object) {
     console.log(object.city);
   }
-
-
 }
