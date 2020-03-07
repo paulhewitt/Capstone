@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 
+import { FullCalendarModule } from '@fullcalendar/angular';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
@@ -32,7 +33,7 @@ export function provideConfig() {
 
 export function momentAdapterFactory() {
   return adapterFactory(moment);
-};
+}
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ export function momentAdapterFactory() {
     MatButtonModule,
     MatCardModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FullCalendarModule
   ],
   providers: [
     {

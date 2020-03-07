@@ -1,1 +1,21 @@
-<p> calendar component </p>
+<body>
+    <div class="content">
+        <div class="calendar">
+            <div class="container-fluid">
+                <full-calendar 
+                schedulerLicenseKey= 'GPL-My-Project-Is-Open-Source'
+                defaultView="timeGridWeek"
+                [header]="{
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
+                }"
+                [plugins]="calendarPlugins"
+                [weekends]="calendarWeekends"
+                [events]="calendarEvents"
+                (dateClick)="handleDateClick($event)"
+                ></full-calendar>    
+            </div>
+        </div>
+    </div>    
+</body>

@@ -25,6 +25,9 @@ $pencil-theme: mat-light-theme($pencil-primary, $pencil-accent, $pencil-warn);
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
 @include angular-material-theme($pencil-theme);
+@import '~@fullcalendar/core/main.css';
+@import '~@fullcalendar/daygrid/main.css';
+@import '~@fullcalendar/timegrid/main.css';
 
 
 
