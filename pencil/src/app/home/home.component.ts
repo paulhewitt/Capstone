@@ -12,13 +12,14 @@ export class HomeComponent implements OnInit {
   constructor(private homeService: HomeService) { }
 
   ngOnInit() {
+    this.getBusinesses();
   }
 
-  search() {
-    this.homeService.getMockData().subscribe(
+  getBusinesses() {
+    this.homeService.getAllBusinesses().subscribe(
       (businesses) => {
-        this.businesses = businesses;
-        console.log(businesses);
+        this.businesses = businesses.Items;
+        console.log(this.businesses);
       }, (error) => {
         console.log(error);
       }
@@ -27,5 +28,9 @@ export class HomeComponent implements OnInit {
 
   cardClicked(object) {
     console.log(object.city);
+  }
+
+  search() {
+    console.log('search clicked');
   }
 }

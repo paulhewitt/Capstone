@@ -1,6 +1,11 @@
-.search-bar{
+.logo{
     top: 30%;
     position: absolute;
+    align-content: center;
+}
+
+.searchBar{
+    padding-top: 40%;
     align-content: center;
 }
 
@@ -17,8 +22,8 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
-.mockData{
-    margin-top: -25em;
+.data{
+    margin-top: -15em;
 }
 
 .card{

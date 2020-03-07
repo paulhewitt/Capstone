@@ -1,32 +1,40 @@
 <body>
   <div class="content">
     <div class="container-fluid">
-      <div class="row ">
-        <div class="col-8 offset-2 col-lg-4 offset-lg-4 search-bar">
+      <div class="row">
+        <div class="col-8 offset-2 col-lg-4 offset-lg-4 logo">
           <div class="jumbotron jumbotron-fluid">
             <div class="container">
               <h1 class="display-2">Pencil.</h1>
               <p class="lead">Scheduling Made Simpler</p>
             </div>
           </div>
+        </div>
+      </div>
+      <div class="row searchBar">
+        <div class="col-4 offset-lg-4">
           <input class="form-control mr-sm-2" type="search" placeholder="Search for anything" aria-label="Search">
+        </div>
+        <div class="col-3">
           <button class="btn btn-primary" (click)="search()">Search</button>
         </div>
       </div>
     </div>
   </div>
 </body>
-<div class="container-fluid mockData">
+<div class="container-fluid data">
   <div class="row">
-      <div *ngFor="let business of businesses" class="col-3 cards">
-        <mat-card class="card" (click)="cardClicked(business)">
-          <mat-card-title>{{business.company_name}}</mat-card-title>
-          <mat-card-subtitle>{{business.department}}</mat-card-subtitle>
-          <mat-card-content>{{business.street_address}}</mat-card-content>
-          <mat-card-content>{{business.city}}</mat-card-content>
-          <mat-card-content>{{business.country}}</mat-card-content>
-          <mat-card-content>{{business.phone}}</mat-card-content>
-        </mat-card>
+    <div *ngFor="let business of businesses" class="col-3 cards">
+      <mat-card class="card" (click)="cardClicked(business)">
+        <mat-card-title>{{business.name.S}}</mat-card-title>
+        <mat-card-subtitle>{{business.type.S}}</mat-card-subtitle>
+        <mat-card-content>{{business.address.S}}</mat-card-content>
+        <mat-card-content>{{business.city.S}}</mat-card-content>
+        <mat-card-content>{{business.state.S}}</mat-card-content>
+        <mat-card-content>{{business.postalCode.S}}</mat-card-content>
+        <mat-card-content>{{business.country.S}}</mat-card-content>
+        <mat-card-content>{{business.userName.S}}</mat-card-content>
+      </mat-card>
     </div>
   </div>
 </div>

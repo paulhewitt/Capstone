@@ -36,6 +36,12 @@ export class HomeService {
     return this.http.get<any>(url, headers);
   }
 
+  public getAllBusinesses(): Observable<any> {
+    const url = `${environment.apiBaseUrl}business`;
+    const headers = this.createHeaders();
+    return this.http.get<any>(url, headers);
+  }
+
   public getMockData(): Observable<any> {
     return this.http.get('http://localhost:4200/assets/data/data.json');
   }
