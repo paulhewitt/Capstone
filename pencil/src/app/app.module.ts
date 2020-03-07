@@ -15,6 +15,8 @@ import { CalendarComponent } from './calendar/calendar.component';
 import { SocialLoginModule, AuthServiceConfig, FacebookLoginProvider } from 'angularx-social-login';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatIconModule, MatButtonModule, MatCardModule } from '@angular/material';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+
 
 const config = new AuthServiceConfig([
   {
@@ -50,7 +52,9 @@ export function momentAdapterFactory() {
     BrowserAnimationsModule,
     MatIconModule,
     MatButtonModule,
-    MatCardModule
+    MatCardModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     {
