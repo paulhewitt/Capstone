@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HomeService } from '../../services/home.service';
-import { NgForm, FormControl, FormGroup, FormBuilder} from '@angular/forms';
+import { FormControl, FormGroup, FormBuilder} from '@angular/forms';
 
 
 @Component({

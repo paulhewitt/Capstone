@@ -5,6 +5,7 @@ import { HomeComponent } from './home/home.component';
 import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
 import { CalendarComponent } from './calendar/calendar.component';
+import { OwnerComponent } from './owner/owner.component';
 
 const routes: Routes = [
 
@@ -19,6 +20,9 @@ const routes: Routes = [
 },
 {
   path: 'calendar', component: CalendarComponent,
+},
+{
+  path: 'owner', component: OwnerComponent,
 },
 {
   path: '**',

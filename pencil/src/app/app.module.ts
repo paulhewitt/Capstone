@@ -17,6 +17,7 @@ import { SocialLoginModule, AuthServiceConfig, FacebookLoginProvider } from 'ang
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatIconModule, MatButtonModule, MatCardModule } from '@angular/material';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { OwnerComponent } from './owner/owner.component';
 
 
 const config = new AuthServiceConfig([
@@ -42,7 +43,8 @@ export function momentAdapterFactory() {
     HomeComponent,
     SignupComponent,
     LoginComponent,
-    CalendarComponent
+    CalendarComponent,
+    OwnerComponent
   ],
   imports: [
     BrowserModule,
