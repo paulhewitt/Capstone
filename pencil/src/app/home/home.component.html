@@ -2,7 +2,7 @@
   <div class="content">
     <div class="container-fluid">
       <div class="row">
-        <div class="col-8 offset-2 col-lg-4 offset-lg-4 logo">
+        <div class="col-10 offset-1 col-lg-4 offset-lg-4 logo">
           <div class="jumbotron jumbotron-fluid">
             <div class="container">
               <h1 class="display-2">Pencil.</h1>
@@ -13,11 +13,11 @@
       </div>
       <form [formGroup]="searchForm" (ngSubmit)="search()">
       <div class="row searchBar">
-          <div class="col-4 offset-lg-4">
+          <div class="col-7 offset-1 col-lg-4 offset-lg-4">
             <input class="form-control mr-sm-2" type="search" name="search" class="form-control"
               formControlName="search" placeholder="Search for anything" aria-label="Search">
           </div>
-          <div class="col-4">
+          <div class="col-2">
             <button class="btn btn-primary">Search</button>
           </div>
       </div>
@@ -27,7 +27,7 @@
 </body>
 <div class="container-fluid data">
   <div class="row">
-    <div *ngFor="let business of businesses" class="col-3 cards">
+    <div *ngFor="let business of businesses" class="col-6 col-lg-4 cards">
       <mat-card class="card" (click)="cardClicked(business)">
         <mat-card-title class="title">{{business.name.S}}</mat-card-title>
         <mat-card-subtitle>{{business.type.S}}</mat-card-subtitle>
