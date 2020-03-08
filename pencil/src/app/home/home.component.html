@@ -29,7 +29,7 @@
   <div class="row">
     <div *ngFor="let business of businesses" class="col-3 cards">
       <mat-card class="card" (click)="cardClicked(business)">
-        <mat-card-title>{{business.name.S}}</mat-card-title>
+        <mat-card-title class="title">{{business.name.S}}</mat-card-title>
         <mat-card-subtitle>{{business.type.S}}</mat-card-subtitle>
         <mat-card-content>{{business.address.S}}</mat-card-content>
         <mat-card-content>{{business.city.S}}</mat-card-content>

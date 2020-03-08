@@ -28,8 +28,16 @@
 
 .card{
     padding-left: 10px;
+    height: 100%;
 }
 
 .cards{
     padding-bottom: 10px;
+}
+
+.title {
+    line-height: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
