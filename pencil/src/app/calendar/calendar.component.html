@@ -1,16 +1,18 @@
 <body>
     <div class="content">
-        <div class="calendar">
-            <div class="container-fluid">
-                <full-calendar 
+        <div class="container-fluid">
+            <div class="calendar">
+                <full-calendar
+                #calendar
                 schedulerLicenseKey= 'GPL-My-Project-Is-Open-Source'
-                defaultView="timeGridWeek"
+                defaultView="timeGridDay"
                 [header]="{
                     left: 'prev,next today',
                     center: 'title',
                     right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
                 }"
                 [plugins]="calendarPlugins"
+                [editable]="true"
                 [weekends]="calendarWeekends"
                 [events]="calendarEvents"
                 (dateClick)="handleDateClick($event)"
