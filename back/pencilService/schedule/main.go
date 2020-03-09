@@ -22,13 +22,12 @@ var errorLogger = log.New(os.Stderr, "ERROR ", log.Llongfile)
 
 type schedule struct {
 	Name           string `json:"name"`
-	//Events         map[string]*dynamodb.AttributeValue `json:"events"`
 	Events 			[]event `json:"events"`
 }
 
 type event struct {
 	Title           string `json:"title"`
-	Date        	string `json:"date"`
+	Start        	string `json:"start"`
 }
 
 func router(req events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, error) {
@@ -44,9 +43,6 @@ func router(req events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, 
 
 func show(req events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, error) {
 	name := req.QueryStringParameters["name"]
-	//if !nameRegexp.MatchString(name) {
-	//	return clientError(http.StatusBadRequest)
-	//}
 
 	sch, err := getItem(name)
 	if err != nil {
@@ -147,16 +143,6 @@ func getItem(name string) (*schedule, error) {
 
 // Add a schedule to DynamoDB.
 func putItem(sch *schedule) error {
-	//av := map[string]*dynamodb.AttributeValue{
-	//	"title": {
-	//		S: aws.String(sch.Events[0].Title),
-	//	},
-	//	"date": {
-	//		S: aws.String(sch.Events.Date),
-	//	},
-	//}
-	//var eventz []map[string]*dynamodb.AttributeValue
-	//eventz = append(eventz, av)
 	av, _ := dynamodbattribute.MarshalList(sch.Events)
 	input := &dynamodb.PutItemInput{
 		TableName: aws.String("scheduleTable"),
