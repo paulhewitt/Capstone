@@ -67,9 +67,12 @@ export class LoginComponent implements OnInit {
     blockToInsert.style.height = '600px';
     blockToInsert.style.border = '0';
     blockToInsert.src = `https://www.google.com/maps/embed/v1/place?key=${environment.apiGoogleMaps}&q=`
-    + this.rngBusiness.address.S + ',' + this.rngBusiness.city.S +
-    '&center=' + lat + ',' + lng
-    + '&zoom=13';
+                        + this.rngBusiness.address.S + ',' + this.rngBusiness.city.S + '&zoom=16';
+    // blockToInsert.src = `https://www.google.com/maps/embed/v1/place?key=${environment.apiGoogleMaps}&q=`
+    // + this.rngBusiness.address.S + ',' + this.rngBusiness.city.S +
+    // '&center=' + lat + ',' + lng
+    // + '&zoom=13';
+    console.log(blockToInsert.src);
     containerBlock.appendChild(blockToInsert);
   }
 }
