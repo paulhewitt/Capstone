@@ -58,18 +58,6 @@ package:
     - ./bin/**
 
 functions:
-  hello:
-    handler: bin/hello
-    events:
-      - http:
-          path: hello
-          method: post
-  world:
-    handler: bin/world
-    events:
-      - http:
-          path: world
-          method: get
   businesses:
     handler: bin/businesses
     events:
@@ -83,6 +71,13 @@ functions:
       - http:
           path: business
           method: get
+          cors: true
+  schedule:
+    handler: bin/schedule
+    events:
+      - http:
+          path: schedule
+          method: ANY
           cors: true
 
 resources: # CloudFormation template syntax from here on.
@@ -112,6 +107,19 @@ resources: # CloudFormation template syntax from here on.
 #            AttributeType: S
 #          - AttributeName: schedule
 #            AttributeType: S
+        KeySchema:
+          - AttributeName: name
+            KeyType: HASH
+        ProvisionedThroughput:
+          ReadCapacityUnits: 15
+          WriteCapacityUnits: 10
+    scheduleTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: scheduleTable
+        AttributeDefinitions:
+          - AttributeName: name
+            AttributeType: S
         KeySchema:
           - AttributeName: name
             KeyType: HASH

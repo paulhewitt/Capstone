@@ -52,6 +52,7 @@ export class CalendarComponent implements OnInit {
   }
 
   handleDateClick(arg) {
+    console.log(arg);
     const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
     if (confirm('Would you like to add an appointment for ' + arg.date.toLocaleDateString(undefined, options) + ' at '
      + arg.date.toLocaleTimeString('en-US') + ' ?')) {
