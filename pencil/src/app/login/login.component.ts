@@ -3,6 +3,8 @@ import { AuthService, FacebookLoginProvider, SocialUser } from 'angularx-social-
 import { UserService } from '../../services/user.service';
 import { HomeService } from '../../services/home.service';
 import { environment } from 'src/environments/environment';
+import { BusinessService } from '../../services/business.service';
+
 
 @Component({
   selector: 'app-login',
@@ -15,40 +17,27 @@ export class LoginComponent implements OnInit {
   businesses: any;
   rngBusiness: any;
 
-  constructor(private authService: AuthService, private userService: UserService, private homeService: HomeService) { }
+  constructor(private authService: AuthService, private userService: UserService, private homeService: HomeService, 
+    private businessService: BusinessService) { }
 
   ngOnInit() {
     this.authService.authState.subscribe((user) => {
       this.userService.setUser(user);
       this.userService.setLoggedIn(user != null);
-      this.getBusinesses();
+      this.businesses = this.businessService.getBusinessArray();
+      console.log(this.businesses);
+      this.rngNumber();
     });
-  }
-
-  getBusinesses() {
-    this.homeService.getAllBusinesses().subscribe(
-      (businesses) => {
-        this.businesses = businesses.Items;
-        console.log(this.businesses);
-        this.rngNumber(this.businesses);
-      }, (error) => {
-        console.log(error);
-      }
-    );
   }
 
   signIn() {
     this.userService.signIn();
   }
 
-  rngNumber(businesses){
-    const numOfBusiness = Object.keys(this.businesses).length;
-    console.log(numOfBusiness);
+  rngNumber() {
+    const numOfBusiness = this.businesses.length;
     const rngID = Math.floor((Math.random() * numOfBusiness) + 1);
-    const genBusiness = this.businesses[rngID];
-    console.log(genBusiness);
-    this.rngBusiness = genBusiness;
-    console.log(this.rngBusiness);
+    this.rngBusiness = this.businesses[rngID];
     document.getElementById('businessName').innerHTML = '<p> Connect With ' + this.rngBusiness.name.S + '</p>';
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(position => {

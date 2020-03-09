@@ -30,7 +30,7 @@ export class HomeComponent implements OnInit {
     this.homeService.getAllBusinesses().subscribe(
       (businesses) => {
         this.businesses = businesses.Items;
-        console.log(this.businesses);
+        this.businessService.setBusinessArray(this.businesses);
       }, (error) => {
         console.log(error);
       }

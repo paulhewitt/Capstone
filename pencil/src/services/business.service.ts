@@ -7,6 +7,7 @@ import { Injectable } from '@angular/core';
 })
 export class BusinessService {
     business: any;
+    businesses: any;
 
 
   constructor() {
@@ -20,5 +21,13 @@ export class BusinessService {
   getBusiness() {
       return this.business;
   }
+
+  setBusinessArray(array) {
+    this.businesses = array;
+}
+
+getBusinessArray() {
+    return this.businesses;
+}
 
 }
