@@ -42,4 +42,16 @@ export class HomeService {
     return this.http.get<any>(url, headers);
   }
 
+  public createSchedule(schedule): Observable<any> {
+    const url = `${environment.apiBaseUrl}schedule`;
+    const headers = this.createHeaders();
+    return this.http.post<any>(url, schedule, headers);
+  }
+
+  public getSchedule(name): Observable<any> {
+    const url = `${environment.apiBaseUrl}schedule?name=` + name;
+    const headers = this.createHeaders();
+    return this.http.get<any>(url, headers);
+  }
+
 }
