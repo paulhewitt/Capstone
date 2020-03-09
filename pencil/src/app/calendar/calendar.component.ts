@@ -1,6 +1,7 @@
 import { Component, ViewChild, OnInit } from '@angular/core';
 import { FullCalendarComponent } from '@fullcalendar/angular';
 import { EventInput } from '@fullcalendar/core';
+import { BusinessService } from '../../services/business.service';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGrigPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
@@ -14,6 +15,8 @@ import interactionPlugin from '@fullcalendar/interaction';
 
 export class CalendarComponent implements OnInit {
 
+  businesses = [];
+
   @ViewChild('calendar', {static: false}) calendarComponent: FullCalendarComponent;
   calendarVisible = true;
   calendarPlugins = [dayGridPlugin, timeGrigPlugin, interactionPlugin];
@@ -21,12 +24,13 @@ export class CalendarComponent implements OnInit {
   calendarEvents: EventInput[] = [
     { title: 'Event Now', start: new Date() }
   ];
-  constructor() { }
+  constructor(private businessService: BusinessService) { }
 
   ngOnInit() {
+    this.businesses.push(this.businessService.getBusiness());
   }
 
-  addEvent(arg){
+  addEvent(arg) {
     const titlePrompt = prompt('Who is this appointment for?');
     this.calendarEvents = this.calendarEvents.concat({ // add new event data. must create new array
       title: titlePrompt,

@@ -1,23 +1,31 @@
 <body>
     <div class="content">
         <div class="container-fluid">
-            <div class="calendar">
-                <full-calendar
-                #calendar
-                schedulerLicenseKey= 'GPL-My-Project-Is-Open-Source'
-                defaultView="timeGridDay"
-                [header]="{
+            <div class="row">
+                <div *ngFor="let business of businesses" class="col-6 col-lg-3 offset-lg-1 cards">
+                    <mat-card class="card">
+                      <mat-card-title class="title">{{business.name.S}}</mat-card-title>
+                      <mat-card-subtitle>{{business.type.S}}</mat-card-subtitle>
+                      <mat-card-content>{{business.address.S}}</mat-card-content>
+                      <mat-card-content>{{business.city.S}}</mat-card-content>
+                      <mat-card-content>{{business.state.S}}</mat-card-content>
+                      <mat-card-content>{{business.postalCode.S}}</mat-card-content>
+                      <mat-card-content>{{business.country.S}}</mat-card-content>
+                      <mat-card-content>{{business.userName.S}}</mat-card-content>
+                    </mat-card>
+                  </div>
+                <div class="col-lg-8">
+                    <div class="calendar">
+                        <full-calendar #calendar schedulerLicenseKey='GPL-My-Project-Is-Open-Source'
+                            defaultView="timeGridDay" [header]="{
                     left: 'prev,next today',
                     center: 'title',
                     right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
-                }"
-                [plugins]="calendarPlugins"
-                [editable]="true"
-                [weekends]="calendarWeekends"
-                [events]="calendarEvents"
-                (dateClick)="handleDateClick($event)"
-                ></full-calendar>    
+                }" [plugins]="calendarPlugins" [editable]="true" [weekends]="calendarWeekends"
+                            [events]="calendarEvents" (dateClick)="handleDateClick($event)"></full-calendar>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>    
+    </div>
 </body>

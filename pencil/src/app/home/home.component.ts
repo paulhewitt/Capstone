@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HomeService } from '../../services/home.service';
+import { BusinessService } from '../../services/business.service';
+import { Router } from '@angular/router';
 import { FormControl, FormGroup, FormBuilder} from '@angular/forms';
 
 
@@ -14,7 +16,8 @@ export class HomeComponent implements OnInit {
   searchForm: FormGroup;
   business: any;
 
-  constructor(private homeService: HomeService, private formBuilder: FormBuilder) { }
+  constructor(private homeService: HomeService, private formBuilder: FormBuilder, private businessService: BusinessService,
+              private router: Router) { }
 
   ngOnInit() {
     this.getBusinesses();
@@ -35,7 +38,8 @@ export class HomeComponent implements OnInit {
   }
 
   cardClicked(object) {
-    console.log(object.city);
+    this.businessService.setBusiness(object);
+    this.router.navigate(['calendar']);
   }
 
   search() {
