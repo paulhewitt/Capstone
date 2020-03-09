@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
       (businesses) => {
         this.businesses = businesses.Items;
         console.log(this.businesses);
-        this.rngNumber(businesses);
+        this.rngNumber(this.businesses);
       }, (error) => {
         console.log(error);
       }

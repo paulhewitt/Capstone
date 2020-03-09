@@ -3,6 +3,7 @@ import { FullCalendarComponent } from '@fullcalendar/angular';
 import { EventInput } from '@fullcalendar/core';
 import { BusinessService } from '../../services/business.service';
 import { UserService } from '../../services/user.service';
+import { HomeService } from '../../services/home.service';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGrigPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
@@ -18,17 +19,12 @@ export class CalendarComponent implements OnInit {
 
   businesses = [];
   user: any;
+  businessName: String;
   today = new Date();
   newDate = new Date(this.today.getUTCFullYear(), this.today.getMonth(), this.today.getDate(), 8, 0, 0);
+  schedule: any;
 
-
-  calendarEvents: EventInput[] = [
-    { title: 'Paul Hewitt', start: this.newDate},
-    { title: 'Ian Quach', start: this.newDate.getTime() + (1 * 60 * 60 * 1000)},
-    { title: 'Tim Maciag', start: this.newDate.getTime() + (2 * 60 * 60 * 1000)},
-    { title: 'Daris Lychuk', start: this.newDate.getTime() + (4 * 60 * 60 * 1000)},
-    { title: 'Kegan Lavoy', start: this.newDate.getTime() + (5 * 60 * 60 * 1000)},
-  ];
+  calendarEvents: EventInput[];
 
   @ViewChild('calendar', {static: false}) calendarComponent: FullCalendarComponent;
   calendarVisible = true;
@@ -36,11 +32,13 @@ export class CalendarComponent implements OnInit {
   calendarWeekends = false;
   calendarMinTime = '08:00';
   calendarMaxTime = '18:00';
-  constructor(private businessService: BusinessService, private userService: UserService) { }
+  constructor(private businessService: BusinessService, private userService: UserService, private homeService: HomeService) { }
 
   ngOnInit() {
     this.businesses.push(this.businessService.getBusiness());
+    this.businessName = this.businesses[0].name.S;
     this.user = this.userService.getUser();
+    this.getSchedule();
   }
 
   addEvent(arg) {
@@ -49,6 +47,8 @@ export class CalendarComponent implements OnInit {
       start: arg.date,
       allDay: arg.allDay
     });
+    let struct = {name: this.businessName, events: this.calendarEvents};
+    this.updateSchedule(struct);
   }
 
   handleDateClick(arg) {
@@ -60,11 +60,21 @@ export class CalendarComponent implements OnInit {
     }
   }
 
-  // modifyTitle(eventIndex, newTitle) {
-  //   let calendarEvents = this.calendarEvents.slice(); // a clone
-  //   let singleEvent = Object.assign({}, calendarEvents[eventIndex]); // a clone
-  //   singleEvent.title = newTitle;
-  //   calendarEvents[eventIndex] = singleEvent;
-  //   this.calendarEvents = calendarEvents; // reassign the array
-  // }
+  getSchedule() {
+    this.homeService.getSchedule(this.businessName).subscribe(
+      (schedule) => {
+        this.calendarEvents = schedule.events;
+      }, (error) => {
+        console.log(error);
+      }
+    );
+  }
+
+  updateSchedule(struct) {
+    this.homeService.createSchedule(struct).subscribe(_ => {
+    }, (err) => {
+      console.log(err);
+    });
+  }
+
 }
