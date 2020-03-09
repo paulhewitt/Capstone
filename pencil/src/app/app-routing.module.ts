@@ -6,6 +6,7 @@ import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
 import { CalendarComponent } from './calendar/calendar.component';
 import { OwnerComponent } from './owner/owner.component';
+import { OwnerCalendarComponent } from './owner-calendar/owner-calendar.component';
 
 const routes: Routes = [
 
@@ -23,6 +24,9 @@ const routes: Routes = [
 },
 {
   path: 'owner', component: OwnerComponent,
+},
+{
+  path: 'owner-calendar', component: OwnerCalendarComponent,
 },
 {
   path: '**',
