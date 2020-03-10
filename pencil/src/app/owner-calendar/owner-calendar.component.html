@@ -7,14 +7,17 @@
                 </div>           
                 <div class="col-12">
                     <div class="calendar">
-                        <full-calendar #calendar schedulerLicenseKey='GPL-My-Project-Is-Open-Source'
-                            defaultView="timeGridDay" [header]="{
+                        <full-calendar deepChangeDetection="true" #ownerCalendar 
+                            schedulerLicenseKey='GPL-My-Project-Is-Open-Source'
+                            defaultView="timeGridDay" 
+                            [header]="{
                             left: 'prev,next today',
                             center: 'title',
                             right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
                             }" 
                             [plugins]="calendarPlugins" [editable]="true" [weekends]="calendarWeekends"
-                            [events]="calendarEvents" (dateClick)="handleDateClick($event)"></full-calendar>
+                            [events]="calendarEvents" [minTime]="calendarMinTime" [maxTime]="calendarMaxTime"
+                            (dateClick)="handleDateClick($event)" (eventClick)="deleteEvent($event)"></full-calendar>
                     </div>
                 </div>
             </div>

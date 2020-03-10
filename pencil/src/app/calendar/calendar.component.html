@@ -18,10 +18,10 @@
                     <div class="calendar">
                         <full-calendar deepChangeDetection="true" #calendar
                             schedulerLicenseKey='GPL-My-Project-Is-Open-Source' defaultView="timeGridDay" [header]="{
-                    left: 'prev,next today',
-                    center: 'title',
-                    right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
-                }" [plugins]="calendarPlugins" [editable]="true" [weekends]="calendarWeekends"
+                                left: 'prev,next today',
+                                center: 'title',
+                                right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
+                            }" [plugins]="calendarPlugins" [weekends]="calendarWeekends"
                             [events]="calendarEvents" [minTime]="calendarMinTime" [maxTime]="calendarMaxTime"
                             (dateClick)="handleDateClick($event)"></full-calendar>
                     </div>
