@@ -45,6 +45,7 @@ export class OwnerCalendarComponent implements OnInit {
     this.calendarEvents = this.calendarEvents.concat({ // add new event data. must create new array
       title: this.user.name,
       start: arg.date,
+      id: this.user.name + arg.date,
       allDay: arg.allDay
     });
     let struct = {name: this.businessName, events: this.calendarEvents};
@@ -78,16 +79,12 @@ export class OwnerCalendarComponent implements OnInit {
 
   deleteEvent(arg) {
     if (confirm('Would you like to cancel this appointment?')){
-      // console.log(arg.event.title);
-      // console.log(arg.event.start.toLocaleTimeString('en-GB'));
-      // console.log(this.calendarEvents);
-      // const findTitle = this.calendarEvents.find(element => element.title === arg.event.title);
-      // console.log(findTitle);
-      // const findStart = this.calendarEvents.find(element => element.start === arg.event.start);
-      // console.log(findStart);
-      // console.log(this.calendarEvents.indexOf(findTitle) && this.calendarEvents.indexOf(findStart));
+      console.log(arg.event.id);
+      console.log(this.calendarEvents);
+      const findID = this.calendarEvents.find(element => element.id === arg.event.id.toString());
+      console.log(this.calendarEvents.indexOf(findID));
 
-      this.calendarEvents.pop();
+      this.calendarEvents.splice(this.calendarEvents.indexOf(findID), 1);
 
       let struct = {name: this.businessName, events: this.calendarEvents};
       this.updateSchedule(struct);

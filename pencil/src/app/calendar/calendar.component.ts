@@ -45,6 +45,7 @@ export class CalendarComponent implements OnInit {
     this.calendarEvents = this.calendarEvents.concat({ // add new event data. must create new array
       title: this.user.name,
       start: arg.date,
+      id: this.user.name + arg.date,
       allDay: arg.allDay
     });
     let struct = {name: this.businessName, events: this.calendarEvents};
