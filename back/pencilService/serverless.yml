@@ -79,6 +79,13 @@ functions:
           path: schedule
           method: ANY
           cors: true
+  users:
+    handler: bin/users
+    events:
+      - http:
+          path: users
+          method: ANY
+          cors: true
 
 resources: # CloudFormation template syntax from here on.
   Resources:
@@ -117,6 +124,19 @@ resources: # CloudFormation template syntax from here on.
       Type: AWS::DynamoDB::Table
       Properties:
         TableName: scheduleTable
+        AttributeDefinitions:
+          - AttributeName: name
+            AttributeType: S
+        KeySchema:
+          - AttributeName: name
+            KeyType: HASH
+        ProvisionedThroughput:
+          ReadCapacityUnits: 15
+          WriteCapacityUnits: 10
+    usersTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: usersTable
         AttributeDefinitions:
           - AttributeName: name
             AttributeType: S

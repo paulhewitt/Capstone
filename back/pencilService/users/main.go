@@ -17,18 +17,15 @@ import (
 	"github.com/aws/aws-sdk-go/service/dynamodb/dynamodbattribute"
 )
 
-//var nameRegexp = regexp.MustCompile(`[0-9]{3}\-[0-9]{10}`)
 var errorLogger = log.New(os.Stderr, "ERROR ", log.Llongfile)
 
-type schedule struct {
-	Name           string `json:"name"`
-	Events 			[]event `json:"events"`
-}
-
-type event struct {
-	Title           string `json:"title"`
-	Start        	string `json:"start"`
-	Id				string `json:"id"`
+type user struct {
+	Id        string `json:"id"`
+	Name      string `json:"name"`
+	Email     string `json:"email"`
+	PhotoUrl  string `json:"photoUrl"`
+	FirstName string `json:"firstName"`
+	LastName  string `json:"lastName"`
 }
 
 func router(req events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, error) {
@@ -44,16 +41,19 @@ func router(req events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, 
 
 func show(req events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, error) {
 	name := req.QueryStringParameters["name"]
+	//if !nameRegexp.MatchString(name) {
+	//	return clientError(http.StatusBadRequest)
+	//}
 
-	sch, err := getItem(name)
+	bz, err := getItem(name)
 	if err != nil {
 		return serverError(err)
 	}
-	if sch == nil {
+	if bz == nil {
 		return clientError(http.StatusNotFound)
 	}
 
-	js, err := json.Marshal(sch)
+	js, err := json.Marshal(bz)
 	if err != nil {
 		return serverError(err)
 	}
@@ -72,8 +72,8 @@ func create(req events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, 
 		return clientError(http.StatusNotAcceptable)
 	}
 
-	sch := new(schedule)
-	err := json.Unmarshal([]byte(req.Body), sch)
+	usr := new(user)
+	err := json.Unmarshal([]byte(req.Body), usr)
 	if err != nil {
 		return clientError(http.StatusUnprocessableEntity)
 	}
@@ -81,18 +81,18 @@ func create(req events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, 
 	//if !nameRegexp.MatchString(bz.name) {
 	//	return clientError(http.StatusBadRequest)
 	//}
-	if sch.Name == "" {
+	if usr.Name == "" {
 		return clientError(http.StatusBadRequest)
 	}
 
-	err = putItem(sch)
+	err = putItem(usr)
 	if err != nil {
 		return serverError(err)
 	}
 
 	return events.APIGatewayProxyResponse{
 		StatusCode: 201,
-		Headers:    map[string]string{"Location": fmt.Sprintf("/schedule?name=%s", sch.Name), "Access-Control-Allow-Origin": "*",
+		Headers:    map[string]string{"Location": fmt.Sprintf("/users?name=%s", usr.Name), "Access-Control-Allow-Origin": "*",
 			"Access-Control-Allow-Credentials": "true",},
 	}, nil
 }
@@ -115,9 +115,9 @@ func clientError(status int) (events.APIGatewayProxyResponse, error) {
 
 var db = dynamodb.New(session.New(), aws.NewConfig().WithRegion("us-east-1"))
 
-func getItem(name string) (*schedule, error) {
+func getItem(name string) (*user, error) {
 	input := &dynamodb.GetItemInput{
-		TableName: aws.String("scheduleTable"),
+		TableName: aws.String("usersTable"),
 		Key: map[string]*dynamodb.AttributeValue{
 			"name": {
 				S: aws.String(name),
@@ -133,26 +133,37 @@ func getItem(name string) (*schedule, error) {
 		return nil, nil
 	}
 
-	sch := new(schedule)
-	err = dynamodbattribute.UnmarshalMap(result.Item, sch)
+	usr := new(user)
+	err = dynamodbattribute.UnmarshalMap(result.Item, usr)
 	if err != nil {
 		return nil, err
 	}
 
-	return sch, nil
+	return usr, nil
 }
 
-// Add a schedule to DynamoDB.
-func putItem(sch *schedule) error {
-	av, _ := dynamodbattribute.MarshalList(sch.Events)
+// Add a business to DynamoDB.
+func putItem(usr *user) error {
 	input := &dynamodb.PutItemInput{
-		TableName: aws.String("scheduleTable"),
+		TableName: aws.String("usersTable"),
 		Item: map[string]*dynamodb.AttributeValue{
-			"name": {
-				S: aws.String(sch.Name),
+			"id": {
+				S: aws.String(usr.Id),
 			},
-			"events": {
-				L: av,
+			"name": {
+				S: aws.String(usr.Name),
+			},
+			"Email": {
+				S: aws.String(usr.Email),
+			},
+			"photoUrl": {
+				S: aws.String(usr.PhotoUrl),
+			},
+			"firstName": {
+				S: aws.String(usr.FirstName),
+			},
+			"lastName": {
+				S: aws.String(usr.LastName),
 			},
 		},
 	}

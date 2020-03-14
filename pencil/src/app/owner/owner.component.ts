@@ -13,7 +13,7 @@ export class OwnerComponent implements OnInit {
   ownedBusinesses = [];
   businesses: any;
   user: any;
-  constructor(private homeService: HomeService, private userService: UserService, 
+  constructor(private homeService: HomeService, private userService: UserService,
               private businessService: BusinessService, private router: Router) { }
 
   ngOnInit() {
