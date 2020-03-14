@@ -31,6 +31,8 @@ type business struct {
 	Country        string `json:"country"`
 	PostalCode     string `json:"postalCode"`
 	Type       	   string `json:"type"`
+	Open     	   string `json:"open"`
+	Close          string `json:"close"`
 }
 
 func router(req events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, error) {
@@ -181,6 +183,12 @@ func putItem(bz *business) error {
 			},
 			"type": {
 				S: aws.String(bz.Type),
+			},
+			"open": {
+				S: aws.String(bz.Open),
+			},
+			"close": {
+				S: aws.String(bz.Close),
 			},
 		},
 	}
