@@ -25,6 +25,8 @@ export class SignupComponent implements OnInit {
 
     this.signupForm = this.formBuilder.group({
       name: new FormControl(''),
+      open: new FormControl(''),
+      close: new FormControl(''),
       address: new FormControl(''),
       addressDetails: new FormControl(''),
       city: new FormControl(''),
