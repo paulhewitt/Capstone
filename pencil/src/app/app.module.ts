@@ -19,6 +19,12 @@ import {MatIconModule, MatButtonModule, MatCardModule } from '@angular/material'
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { OwnerComponent } from './owner/owner.component';
 import { OwnerCalendarComponent } from './owner-calendar/owner-calendar.component';
+import { GraphQLModule } from './graphql.module';
+import { ApolloModule, APOLLO_OPTIONS } from 'apollo-angular';
+import { HttpLinkModule, HttpLink } from 'apollo-angular-link-http';
+import { InMemoryCache } from 'apollo-cache-inmemory';
+import { ChartsModule } from 'ng2-charts';
+
 
 
 const config = new AuthServiceConfig([
@@ -60,12 +66,27 @@ export function momentAdapterFactory() {
     MatCardModule,
     FormsModule,
     ReactiveFormsModule,
-    FullCalendarModule
+    FullCalendarModule,
+    GraphQLModule,
+    ApolloModule,
+    HttpLinkModule,
+    ChartsModule
   ],
   providers: [
     {
       provide: AuthServiceConfig,
       useFactory: provideConfig
+    }, {
+      provide: APOLLO_OPTIONS,
+      useFactory: (httpLink: HttpLink) => {
+        return {
+          cache: new InMemoryCache(),
+          link: httpLink.create({
+            uri: 'https://o5x5jzoo7z.sse.codesandbox.io/graphql'
+          })
+        };
+      },
+      deps: [HttpLink]
     }
   ],
   bootstrap: [AppComponent]

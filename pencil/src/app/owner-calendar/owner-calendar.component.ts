@@ -21,6 +21,48 @@ export class OwnerCalendarComponent implements OnInit {
   schedule: any;
   today = new Date();
 
+  uniqueAppts: any[];
+
+  // public barChartOptions = {
+  //   scaleShowVerticalLines: false,
+  //   responsive: true
+  // };
+  // public barChartLabels = ['2006', '2007', '2008', '2009', '2010', '2011', '2012'];
+  // public barChartType = 'bar';
+  // public barChartLegend = true;
+  // public barChartData = [
+  //   {data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A'},
+  //   {data: [28, 48, 40, 19, 86, 27, 90], label: 'Series B'}
+  // ];
+
+  public barChartOptions = {
+    scaleShowVerticalLines: false,
+    responsive: true
+  };
+  public barChartLabels = ['2006', '2007', '2008', '2009'];
+  public barChartType = 'bar';
+  public barChartLegend = true;
+  public barChartData = [
+    {data: [1, 2, 3, 4], label: 'Paul Hewitt'},
+    {data: [2, 3, 4, 1], label: 'Ian Quach'},
+    {data: [3, 2, 1, 3], label: 'Elon Musk'},
+    {data: [2, 1, 2, 1], label: 'Tim Macaig'},
+  ];
+
+  public lineChartOptions = {
+    scaleShowVerticalLines: false,
+    responsive: true
+  };
+  public lineChartLabels = ['2006', '2007', '2008', '2009'];
+  public lineChartType = 'line';
+  public lineChartLegend = true;
+  public lineChartData = [
+    {data: [1, 2, 3, 4], label: 'Paul Hewitt'},
+    {data: [2, 3, 4, 1], label: 'Ian Quach'},
+    {data: [3, 2, 1, 3], label: 'Elon Musk'},
+    {data: [2, 1, 2, 1], label: 'Tim Macaig'},
+  ];
+
   newDate = new Date(this.today.getUTCFullYear(), this.today.getMonth(), this.today.getDate(), 8, 0, 0);
 
   calendarEvents: EventInput[];
@@ -64,6 +106,15 @@ export class OwnerCalendarComponent implements OnInit {
     this.homeService.getSchedule(this.businessName).subscribe(
       (schedule) => {
         this.calendarEvents = schedule.events;
+        console.log(this.calendarEvents);
+        const hash = [];
+        for (let i = 0; i < schedule.events.length; i++) {
+          if (!hash[this.calendarEvents[i]['title']]) { hash[this.calendarEvents[i]['title']] = []; }
+          hash[this.calendarEvents[i]['title']].push(this.calendarEvents[i]);
+        }
+        this.uniqueAppts = hash;
+        console.log(this.uniqueAppts);
+        console.log(this.uniqueAppts["Paul Hewitt"]);
       }, (error) => {
         console.log(error);
       }
