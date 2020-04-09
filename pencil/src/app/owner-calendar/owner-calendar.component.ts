@@ -84,10 +84,11 @@ export class OwnerCalendarComponent implements OnInit {
   }
 
   addEvent(arg) {
+    const nameTitle = prompt('Who is this appointment for?');
     this.calendarEvents = this.calendarEvents.concat({ // add new event data. must create new array
-      title: this.user.name,
+      title: nameTitle,
       start: arg.date,
-      id: this.user.name + arg.date,
+      id: nameTitle + arg.date,
       allDay: arg.allDay
     });
     let struct = {name: this.businessName, events: this.calendarEvents};
@@ -140,20 +141,5 @@ export class OwnerCalendarComponent implements OnInit {
       let struct = {name: this.businessName, events: this.calendarEvents};
       this.updateSchedule(struct);
     }
-    // if (confirm('Would you like to reschedule this appointment?')) {
-    //   // console.log(arg);
-    //   // console.log(this.calendarEvents);
-    //   // this.calendarEvents.pop();
-    //   // console.log(this.ownerCalendarComponent.getApi().getEventById(arg.event.id))
-    //   // this.ownerCalendarComponent.getApi().getEventById(arg.event.id).remove();
-    //   // this.ownerCalendarComponent.getApi().getEvents();
-    //   // console.log(this.ownerCalendarComponent.getApi().getEvents());
-    //   // this.calendarEvents.splice(this.calendarEvents.indexOf(this.calendarEvents.find(element => element.id === arg.event.id)), 1);
-
-    //   // this.calendarEvents = this.calendarEvents.concat();
-    //   // this.addEvent(arg);
-    //   // this.ownerCalendarComponent.getApi().rerenderEvents();
-    //   // console.log(this.calendarEvents);
-    // }
   }
 }
