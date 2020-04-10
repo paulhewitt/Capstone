@@ -23,33 +23,7 @@ export class OwnerCalendarComponent implements OnInit {
 
   uniqueAppts: any[];
 
-  // public barChartOptions = {
-  //   scaleShowVerticalLines: false,
-  //   responsive: true
-  // };
-  // public barChartLabels = ['2006', '2007', '2008', '2009', '2010', '2011', '2012'];
-  // public barChartType = 'bar';
-  // public barChartLegend = true;
-  // public barChartData = [
-  //   {data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A'},
-  //   {data: [28, 48, 40, 19, 86, 27, 90], label: 'Series B'}
-  // ];
-
-  public barChartOptions = {
-    scaleShowVerticalLines: false,
-    responsive: true
-  };
-  public barChartLabels = ['2006', '2007', '2008', '2009'];
-  public barChartType = 'bar';
-  public barChartLegend = true;
-  public barChartData = [
-    {data: [1, 2, 3, 4], label: 'Paul Hewitt'},
-    {data: [2, 3, 4, 1], label: 'Ian Quach'},
-    {data: [3, 2, 1, 3], label: 'Elon Musk'},
-    {data: [2, 1, 2, 1], label: 'Tim Macaig'},
-  ];
-
-  public lineChartOptions = {
+  public lineChartOptions = { // graph data is hard coded, could use the data stored in uniqueAppts
     scaleShowVerticalLines: false,
     responsive: true
   };
@@ -60,7 +34,6 @@ export class OwnerCalendarComponent implements OnInit {
     {data: [1, 2, 3, 4], label: 'Paul Hewitt'},
     {data: [2, 3, 4, 1], label: 'Ian Quach'},
     {data: [3, 2, 1, 3], label: 'Elon Musk'},
-    {data: [2, 1, 2, 1], label: 'Tim Macaig'},
   ];
 
   newDate = new Date(this.today.getUTCFullYear(), this.today.getMonth(), this.today.getDate(), 8, 0, 0);
