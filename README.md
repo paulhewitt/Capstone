@@ -14,8 +14,8 @@ Software Systems Engineering Capstone Project - University of Regina - 2019-2020
 
 **Documentation & Deliverables:**
 * [Project Video]()
-* [Project Presentation]()
-* [Design Document]()
+* [Project Presentation](https://github.com/paulhewitt/Capstone/blob/master/Presentations/Pencil%20Presentation.pdf)
+* [Design Document](https://github.com/paulhewitt/Capstone/blob/master/Documentation/Pencil%20Design%20Document.pdf)
 * [Code Quality Report](https://github.com/paulhewitt/Capstone/blob/master/Documentation/Code%20Quality%20Review%20Report.pdf)
 * [Project Experience Report](https://github.com/paulhewitt/Capstone/blob/master/Documentation/Project%20Experience%20Report.pdf)
 * [Pencil User Manual](https://github.com/paulhewitt/Capstone/blob/master/Documentation/Pencil%20User%20Manual.pdf)
