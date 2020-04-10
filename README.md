@@ -13,16 +13,17 @@ Software Systems Engineering Capstone Project - University of Regina - 2019-2020
 **Contributors:** Paul Hewitt, Ian Quach
 
 **Documentation & Deliverables:**
-* [Project Video]()
+* [Project Video](https://youtu.be/8dgjCD_Ma-w)
 * [Project Presentation](https://github.com/paulhewitt/Capstone/blob/master/Presentations/Pencil%20Presentation.pdf)
 * [Design Document](https://github.com/paulhewitt/Capstone/blob/master/Documentation/Pencil%20Design%20Document.pdf)
 * [Code Quality Report](https://github.com/paulhewitt/Capstone/blob/master/Documentation/Code%20Quality%20Review%20Report.pdf)
 * [Project Experience Report](https://github.com/paulhewitt/Capstone/blob/master/Documentation/Project%20Experience%20Report.pdf)
 * [Pencil User Manual](https://github.com/paulhewitt/Capstone/blob/master/Documentation/Pencil%20User%20Manual.pdf)
+* [Poster]()
 * [Frontend Code](https://github.com/paulhewitt/Capstone/tree/master/pencil)
 * [Backend Code](https://github.com/paulhewitt/Capstone/tree/master/back/pencilService)
 * [Miscellaneous Documents](https://github.com/paulhewitt/Capstone/tree/master/Documentation/Miscellaneous%20Documentation)
-* [Miscellaneous Presentations]()
+* [Miscellaneous Presentations](https://github.com/paulhewitt/Capstone/tree/master/Presentations/Miscellaneous%20Presentations)
       
 ## Project Information
 **Project Description**
