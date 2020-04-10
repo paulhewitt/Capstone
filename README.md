@@ -24,6 +24,8 @@ Software Systems Engineering Capstone Project - University of Regina - 2019-2020
 * [Backend Code](https://github.com/paulhewitt/Capstone/tree/master/back/pencilService)
 * [Miscellaneous Documents](https://github.com/paulhewitt/Capstone/tree/master/Documentation/Miscellaneous%20Documentation)
 * [Miscellaneous Presentations](https://github.com/paulhewitt/Capstone/tree/master/Presentations/Miscellaneous%20Presentations)
+
+ <img align="center" src="/pencil_screenshot.png" alt="Pencil Screenshot" width="100%"/>
       
 ## Project Information
 **Project Description**
